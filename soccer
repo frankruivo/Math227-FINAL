@@ -1,0 +1,587 @@
+
+
+import matplotlib.pyplot as plt
+import pandas as pd
+
+data= pd.read_csv(r'C:\Users\frank\Documents\MATH 227\soccerdata.csv')
+#items=['OverallSkill','Potential Score','Market Value','Weekly Salary','Height','Weight','Age','Ball Control', 'Dribbling','Marking','Slide Tackle','Stand Tackle', 'Agression', 'Reaction', 'Attack Position', 'Interceptions', 'Vision', 'Composure', 'Crossing', 'Short Pass', 'Long Pass', 'Acceleration', 'Stamina', 'Strength', 'Balance', 'Sprint Speed', 'Agility', 'Jumping', 'Heading', 'Shotpower', 'Finishing', 'Long Shots', 'Curve', 'Free Kick', 'Penalties', 'Volleys', 'GK Position', 'GK Diving', 'GK Handling', 'GK Kicking', 'GK Reflex']
+items=['Age',	'Overall',	'Potential',	'Value',	'Wage',	'Special',	'International Reputation',	'Weak Foot',	'Skill Moves',	'Jersey Number',	'Height','Weight',	'Crossing',	'Finishing',	'HeadingAccuracy',	'ShortPassing',	'Volleys',	'Dribbling', 'Curve',	'FKAccuracy',	'LongPassing',	'BallControl'	'Acceleration',	'SprintSpeed',	'Agility',	'Reactions',	'Balance',	'ShotPower',	'Jumping',	'Stamina',	'Strength',	'LongShots',	'Aggression',	'Interceptions',	'Positioning',	'Vision',	'Penalties',	'Composure',	'Marking',	'StandingTackle',	'SlidingTackle',	'GKDiving',	'GKHandling',	'GKKicking',	'GKPositioning',	'GKReflexes']
+
+
+
+
+
+Name=data['Name'][:]
+Age=data['Age'][:]
+Overall=data['Overall'][:]
+Potential=data['Potential'][:]
+Value=data['Value']
+
+
+        
+
+Wage=data['Wage'][:]
+Special=data['Special'][:]
+Preferred_Foot=data['Preferred Foot'][:]
+International_Reputation=data['International Reputation'][:]
+Weak_Foot=data['Weak Foot'][:]
+Skill_Moves=data['Skill Moves'][:]
+Work_Rate=data['Work Rate'][:]	
+Position=data['Position'][:]	
+Jersey_Number=data['Jersey Number'][:]	
+
+Height=data['Height'][:]	
+Weight=data['Weight'][:]	
+Crossing=data['Crossing'][:]	
+Finishing=data['Finishing'][:]	
+HeadingAccuracy=data['HeadingAccuracy'][:]	
+ShortPassing=data['ShortPassing'][:]	
+Volleys=data['Volleys'][:]	
+Dribbling=data['Dribbling'][:]	
+Curve=data['Curve'][:]	
+FKAccuracy=data['FKAccuracy'][:]	
+LongPassing=data['LongPassing'][:]	
+BallControl=data['BallControl'][:]	
+Acceleration=data['Acceleration'][:]	
+SprintSpeed=data['SprintSpeed'][:]	
+Agility=data['Agility'][:]	
+Reactions=data['Reactions'][:]	
+Balance=data['Balance'][:]	
+ShotPower=data['ShotPower'][:]	
+Jumping=data['Jumping'][:]	
+Stamina=data['Stamina'][:]	
+Strength=data['Strength'][:]	
+LongShots=data['LongShots'][:]
+Aggression=data['Aggression'][:]	
+Interceptions=data['Interceptions'][:]	
+Positioning=data['Positioning'][:]	
+Vision=data['Vision'][:]	
+Penalties=data['Penalties'][:]	
+Composure=data['Composure'][:]	
+Marking=data['Marking'][:]	
+StandingTackle=data['StandingTackle'][:]	
+SlidingTackle=data['SlidingTackle'][:]	
+GKDiving=data['GKDiving'][:]	
+GKHandling=data['GKHandling'][:]	
+GKKicking=data['GKKicking'][:]	
+GKPositioning=data['GKPositioning'][:]	
+GKReflexes=data['GKReflexes'][:]	
+
+
+
+
+
+stuff=[ Age, Overall, Potential, Value, Wage, Special,	International_Reputation, Weak_Foot, Skill_Moves,  Jersey_Number, Height,	Weight,	Crossing,	Finishing,	HeadingAccuracy,	ShortPassing,	Volleys,	Dribbling,	Curve,	FKAccuracy,	LongPassing,	BallControl,	Acceleration,	SprintSpeed,	Agility,	Reactions,	Balance, ShotPower,	Jumping,	Stamina, LongShots,	Aggression,	Interceptions,	Positioning,	Vision,	Penalties,	Composure,	Marking,	StandingTackle,	SlidingTackle,	GKDiving,	GKHandling,	GKKicking,	GKPositioning,	GKReflexes]
+
+#plots figures
+
+for i in range(len(stuff)):
+    plt.figure(i)
+    plt.plot(stuff[i],Value,'o')
+    plt.xlabel(items[i])
+    plt.ylabel('Market Value')
+    plt.show()
+
+
+
+#Making new excel sheets for goalie,def, mid, off
+import pandas as pd
+GKName=[]
+GKAge=[]
+GKOverall=[]
+GKPotential=[]
+GKValue=[]
+GKWage=[]
+GKSpecial=[]
+GKPreferred_Foot=[]
+GKInternational_Reputation=[]
+GKWeak_Foot=[]
+GKSkill_Moves=[]
+GKWork_Rate=[]
+GKPosition=[]
+GKJersey_Number=[]	
+GKHeight=[]
+GKWeight=[]
+GKCrossing=[]	
+GKFinishing=[]
+GKHeadingAccuracy=[]
+GKShortPassing=[]
+GKVolleys=[]
+GKDribbling=[]
+GKCurve=[]
+GKFKAccuracy=[]	
+GKLongPassing=[]
+GKBallControl=[]
+GKAcceleration=[]	
+GKSprintSpeed=[]	
+GKAgility=[]
+GKReactions=[]	
+GKBalance=[]
+GKShotPower=[]
+GKJumping=[]
+GKStamina=[]
+GKStrength=[]
+GKLongShots=[]
+GKAggression=[]
+GKInterceptions=[]	
+gkPositioning=[]
+GKVision=	[]
+GKPenalties=[]
+GKComposure=[]
+GKMarking=[]	
+GKStandingTackle=[]	
+GKSlidingTackle=[]
+GKGKDiving=[]
+GKGKHandling=[]	
+GKGKKicking=[]
+GKGKPositioning=[]
+GKGKReflexes=[]	
+
+DName=[]
+DAge=[]
+DOverall=[]
+DPotential=[]
+DValue=[]
+DWage=[]
+DSpecial=[]
+DPreferred_Foot=[]
+DInternational_Reputation=[]
+DWeak_Foot=[]
+DSkill_Moves=[]
+DWork_Rate=[]
+DPosition=[]
+DJersey_Number=[]	
+DHeight=[]
+DWeight=[]
+DCrossing=[]	
+DFinishing=[]
+DHeadingAccuracy=[]
+DShortPassing=[]
+DVolleys=[]
+DDribbling=[]
+DCurve=[]
+DFKAccuracy=[]	
+DLongPassing=[]
+DBallControl=[]
+DAcceleration=[]	
+DSprintSpeed=[]	
+DAgility=[]
+DReactions=[]	
+DBalance=[]
+DShotPower=[]
+DJumping=[]
+DStamina=[]
+DStrength=[]
+DLongShots=[]
+DAggression=[]
+DInterceptions=[]	
+DPositioning=[]
+DVision=[]
+DPenalties=[]
+DComposure=[]
+DMarking=[]	
+DStandingTackle=[]	
+DSlidingTackle=[]
+DGKDiving=[]
+DGKHandling=[]	
+DGKKicking=[]
+DGKPositioning=[]
+DGKReflexes=[]	
+
+
+mName=[]
+mAge=[]
+mOverall=[]
+mPotential=[]
+mValue=[]
+mWage=[]
+mSpecial=[]
+mPreferred_Foot=[]
+mInternational_Reputation=[]
+mWeak_Foot=[]
+mSkill_Moves=[]
+mWork_Rate=[]
+mPosition=[]
+mJersey_Number=[]	
+mHeight=[]
+mWeight=[]
+mCrossing=[]	
+mFinishing=[]
+mHeadingAccuracy=[]
+mShortPassing=[]
+mVolleys=[]
+mDribbling=[]
+mCurve=[]
+mFKAccuracy=[]	
+mLongPassing=[]
+mBallControl=[]
+mAcceleration=[]	
+mSprintSpeed=[]	
+mAgility=[]
+mReactions=[]	
+mBalance=[]
+mShotPower=[]
+mJumping=[]
+mStamina=[]
+mStrength=[]
+mLongShots=[]
+mAggression=[]
+mInterceptions=[]	
+mPositioning=[]
+mVision=	[]
+mPenalties=[]
+mComposure=[]
+mMarking=[]	
+mStandingTackle=[]	
+mSlidingTackle=[]
+mGKDiving=[]
+mGKHandling=[]	
+mGKKicking=[]
+mGKPositioning=[]
+mGKReflexes=[]	
+
+
+aName=[]
+aAge=[]
+aOverall=[]
+aPotential=[]
+aValue=[]
+aWage=[]
+aSpecial=[]
+aPreferred_Foot=[]
+aInternational_Reputation=[]
+aWeak_Foot=[]
+aSkill_Moves=[]
+aWork_Rate=[]
+aPosition=[]
+aJersey_Number=[]	
+aHeight=[]
+aWeight=[]
+aCrossing=[]	
+aFinishing=[]
+aHeadingAccuracy=[]
+aShortPassing=[]
+aVolleys=[]
+aDribbling=[]
+aCurve=[]
+aFKAccuracy=[]	
+aLongPassing=[]
+aBallControl=[]
+aAcceleration=[]	
+aSprintSpeed=[]	
+aAgility=[]
+aReactions=[]	
+aBalance=[]
+aShotPower=[]
+aJumping=[]
+aStamina=[]
+aStrength=[]
+aLongShots=[]
+aAggression=[]
+aInterceptions=[]	
+aPositioning=[]
+aVision=	[]
+aPenalties=[]
+aComposure=[]
+aMarking=[]	
+aStandingTackle=[]	
+aSlidingTackle=[]
+aGKDiving=[]
+aGKHandling=[]	
+aGKKicking=[]
+aGKPositioning=[]
+aGKReflexes=[]	
+
+goalies=['GK']
+defenders=['RCB','CB','LCB','LB','RB','RWB','LWB']
+middle=['RCM','LCM','LDM','CAM','CDM','RM','LAM','LM','RDM','RAM']
+offense=['ST','LW','RS','LS','CF','RW','LW','RF','LF']
+
+
+
+for i in range(len(Position)):
+    if Position[i] in goalies:
+        GKName.append(Name[i])
+        GKAge.append(Age[i])
+        GKOverall.append(Overall[i])
+        GKPotential.append(Potential[i])
+        GKValue.append(Value[i])
+        GKWage.append(Wage[i])
+        GKSpecial.append(Special[i])
+        GKPreferred_Foot.append(Preferred_Foot[i])
+        GKInternational_Reputation.append(International_Reputation[i])
+        GKWeak_Foot.append(Weak_Foot[i])
+        GKSkill_Moves.append(Skill_Moves[i])
+        GKWork_Rate.append(Work_Rate[i])
+        GKPosition.append(Position[i])
+        GKJersey_Number.append(Jersey_Number[i])
+        GKHeight.append(Height[i])
+        GKWeight.append(Weight[i])
+        GKCrossing.append(Crossing[i])
+        GKFinishing.append(Finishing[i])
+        GKHeadingAccuracy.append(HeadingAccuracy[i])
+        GKShortPassing.append(ShortPassing[i])
+        GKVolleys.append(Volleys[i])
+        GKDribbling.append(Dribbling[i])
+        GKCurve.append(Curve[i])
+        GKFKAccuracy.append(FKAccuracy[i])
+        GKLongPassing.append(LongPassing[i])
+        GKBallControl.append(BallControl[i])
+        GKAcceleration.append(Acceleration[i])	
+        GKSprintSpeed.append(SprintSpeed[i])
+        GKAgility.append(Agility[i])
+        GKReactions.append(Reactions[i])
+        GKBalance.append(Balance[i])
+        GKShotPower.append(ShotPower[i])
+        GKJumping.append(Jumping[i])
+        GKStamina.append(Stamina[i])
+        GKStrength.append(Strength[i])
+        GKLongShots.append(LongShots[i])
+        GKAggression.append(Aggression[i])
+        GKInterceptions.append(Interceptions[i])
+        gkPositioning.append(Positioning[i])
+        GKVision.append(Vision[i])
+        GKPenalties.append(Penalties[i])
+        GKComposure.append(Composure[i])
+        GKMarking.append(Marking[i])
+        GKStandingTackle.append(StandingTackle[i])
+        GKSlidingTackle.append(SlidingTackle[i])
+        GKGKDiving.append(GKDiving[i])
+        GKGKHandling.append(GKHandling[i])
+        GKGKKicking.append(GKKicking[i])
+        GKGKPositioning.append(GKPositioning[i])
+        GKGKReflexes.append(GKReflexes[i])
+    
+    if Position[i] in defenders:
+        DName.append(Name[i])
+        DAge.append(Age[i])
+        DOverall.append(Overall[i])
+        DPotential.append(Potential[i])
+        DValue.append(Value[i])
+        DWage.append(Wage[i])
+        DSpecial.append(Special[i])
+        DPreferred_Foot.append(Preferred_Foot[i])
+        DInternational_Reputation.append(International_Reputation[i])
+        DWeak_Foot.append(Weak_Foot[i])
+        DSkill_Moves.append(Skill_Moves[i])
+        DWork_Rate.append(Work_Rate[i])
+        DPosition.append(Position[i])
+        DJersey_Number.append(Jersey_Number[i])
+        DHeight.append(Height[i])
+        DWeight.append(Weight[i])
+        DCrossing.append(Crossing[i])
+        DFinishing.append(Finishing[i])
+        DHeadingAccuracy.append(HeadingAccuracy[i])
+        DShortPassing.append(ShortPassing[i])
+        DVolleys.append(Volleys[i])
+        DDribbling.append(Dribbling[i])
+        DCurve.append(Curve[i])
+        DFKAccuracy.append(FKAccuracy[i])
+        DLongPassing.append(LongPassing[i])
+        DBallControl.append(BallControl[i])
+        DAcceleration.append(Acceleration[i])	
+        DSprintSpeed.append(SprintSpeed[i])
+        DAgility.append(Agility[i])
+        DReactions.append(Reactions[i])
+        DBalance.append(Balance[i])
+        DShotPower.append(ShotPower[i])
+        DJumping.append(Jumping[i])
+        DStamina.append(Stamina[i])
+        DStrength.append(Strength[i])
+        DLongShots.append(LongShots[i])
+        DAggression.append(Aggression[i])
+        DInterceptions.append(Interceptions[i])
+        DPositioning.append(Positioning[i])
+        DVision.append(Vision[i])
+        DPenalties.append(Penalties[i])
+        DComposure.append(Composure[i])
+        DMarking.append(Marking[i])
+        DStandingTackle.append(StandingTackle[i])
+        DSlidingTackle.append(SlidingTackle[i])
+        DGKDiving.append(GKDiving[i])
+        DGKHandling.append(GKHandling[i])
+        DGKKicking.append(GKKicking[i])
+        DGKPositioning.append(GKPositioning[i])
+        DGKReflexes.append(GKReflexes[i])
+    
+    if Position[i] in middle:
+        mName.append(Name[i])
+        mAge.append(Age[i])
+        mOverall.append(Overall[i])
+        mPotential.append(Potential[i])
+        mValue.append(Value[i])
+        mWage.append(Wage[i])
+        mSpecial.append(Special[i])
+        mPreferred_Foot.append(Preferred_Foot[i])
+        mInternational_Reputation.append(International_Reputation[i])
+        mWeak_Foot.append(Weak_Foot[i])
+        mSkill_Moves.append(Skill_Moves[i])
+        mWork_Rate.append(Work_Rate[i])
+        mPosition.append(Position[i])
+        mJersey_Number.append(Jersey_Number[i])
+        mHeight.append(Height[i])
+        mWeight.append(Weight[i])
+        mCrossing.append(Crossing[i])
+        mFinishing.append(Finishing[i])
+        mHeadingAccuracy.append(HeadingAccuracy[i])
+        mShortPassing.append(ShortPassing[i])
+        mVolleys.append(Volleys[i])
+        mDribbling.append(Dribbling[i])
+        mCurve.append(Curve[i])
+        mFKAccuracy.append(FKAccuracy[i])
+        mLongPassing.append(LongPassing[i])
+        mBallControl.append(BallControl[i])
+        mAcceleration.append(Acceleration[i])	
+        mSprintSpeed.append(SprintSpeed[i])
+        mAgility.append(Agility[i])
+        mReactions.append(Reactions[i])
+        mBalance.append(Balance[i])
+        mShotPower.append(ShotPower[i])
+        mJumping.append(Jumping[i])
+        mStamina.append(Stamina[i])
+        mStrength.append(Strength[i])
+        mLongShots.append(LongShots[i])
+        mAggression.append(Aggression[i])
+        mInterceptions.append(Interceptions[i])
+        mPositioning.append(Positioning[i])
+        mVision.append(Vision[i])
+        mPenalties.append(Penalties[i])
+        mComposure.append(Composure[i])
+        mMarking.append(Marking[i])
+        mStandingTackle.append(StandingTackle[i])
+        mSlidingTackle.append(SlidingTackle[i])
+        mGKDiving.append(GKDiving[i])
+        mGKHandling.append(GKHandling[i])
+        mGKKicking.append(GKKicking[i])
+        mGKPositioning.append(GKPositioning[i])
+        mGKReflexes.append(GKReflexes[i])
+        
+    if Position[i] in offense:
+        aName.append(Name[i])
+        aAge.append(Age[i])
+        aOverall.append(Overall[i])
+        aPotential.append(Potential[i])
+        aValue.append(Value[i])
+        aWage.append(Wage[i])
+        aSpecial.append(Special[i])
+        aPreferred_Foot.append(Preferred_Foot[i])
+        aInternational_Reputation.append(International_Reputation[i])
+        aWeak_Foot.append(Weak_Foot[i])
+        aSkill_Moves.append(Skill_Moves[i])
+        aWork_Rate.append(Work_Rate[i])
+        aPosition.append(Position[i])
+        aJersey_Number.append(Jersey_Number[i])
+        aHeight.append(Height[i])
+        aWeight.append(Weight[i])
+        aCrossing.append(Crossing[i])
+        aFinishing.append(Finishing[i])
+        aHeadingAccuracy.append(HeadingAccuracy[i])
+        aShortPassing.append(ShortPassing[i])
+        aVolleys.append(Volleys[i])
+        aDribbling.append(Dribbling[i])
+        aCurve.append(Curve[i])
+        aFKAccuracy.append(FKAccuracy[i])
+        aLongPassing.append(LongPassing[i])
+        aBallControl.append(BallControl[i])
+        aAcceleration.append(Acceleration[i])	
+        aSprintSpeed.append(SprintSpeed[i])
+        aAgility.append(Agility[i])
+        aReactions.append(Reactions[i])
+        aBalance.append(Balance[i])
+        aShotPower.append(ShotPower[i])
+        aJumping.append(Jumping[i])
+        aStamina.append(Stamina[i])
+        aStrength.append(Strength[i])
+        aLongShots.append(LongShots[i])
+        aAggression.append(Aggression[i])
+        aInterceptions.append(Interceptions[i])
+        aPositioning.append(Positioning[i])
+        aVision.append(Vision[i])
+        aPenalties.append(Penalties[i])
+        aComposure.append(Composure[i])
+        aMarking.append(Marking[i])
+        aStandingTackle.append(StandingTackle[i])
+        aSlidingTackle.append(SlidingTackle[i])
+        aGKDiving.append(GKDiving[i])
+        aGKHandling.append(GKHandling[i])
+        aGKKicking.append(GKKicking[i])
+        aGKPositioning.append(GKPositioning[i])
+        aGKReflexes.append(GKReflexes[i])
+    
+        
+    
+    
+    
+characters=['Name','Age','Overall','Potential','Value','Wage','Special','Preferred Foot','International Reputation','Weak_Foot','Skill_Moves','Work_Rate','Position','Jersey_Number','Height','Weight','Crossing'	,'Finishing','HeadingAccuracy','ShortPassing','Volleys','Dribbling','Curve','FKAccuracy'	,'LongPassing','BallControl','Acceleration'	,'SprintSpeed'	,'Agility','Reactions'	,'Balance','ShotPower','Jumping','Stamina','Strength','LongShots','Aggression','Interceptions'	,'Positioning','Vision','Penalties','Composure','Marking'	,'StandingTackle'	,'SlidingTackle','GKDiving','GKHandling'	,'GKKicking','GKPositioning','GKReflexes']        
+gklist=[GKName,GKAge,GKOverall,GKPotential,GKValue, GKWage, GKSpecial, GKPreferred_Foot,GKInternational_Reputation,GKWeak_Foot,GKSkill_Moves, GKWork_Rate,GKPosition, GKJersey_Number, GKHeight, GKWeight, GKCrossing, GKFinishing,GKHeadingAccuracy,GKShortPassing,GKVolleys,GKDribbling,GKCurve,GKFKAccuracy,GKLongPassing,GKBallControl,GKAcceleration,GKSprintSpeed,GKAgility,GKReactions,GKBalance,GKShotPower,GKJumping,GKStamina,GKStrength,GKLongShots,GKAggression,GKInterceptions,gkPositioning,GKVision,GKPenalties,GKComposure,GKMarking, GKStandingTackle, GKSlidingTackle,GKGKDiving,GKGKHandling,GKGKKicking,GKGKPositioning,GKGKReflexes]
+deflist=[DName,DAge,DOverall,DPotential,DValue, DWage, DSpecial, DPreferred_Foot,DInternational_Reputation,DWeak_Foot,DSkill_Moves, DWork_Rate,DPosition, DJersey_Number, DHeight, DWeight, DCrossing, DFinishing,DHeadingAccuracy,DShortPassing,DVolleys,DDribbling,DCurve,DFKAccuracy,DLongPassing,DBallControl,DAcceleration,DSprintSpeed,DAgility,DReactions,DBalance,DShotPower,DJumping,DStamina,DStrength,DLongShots,DAggression,DInterceptions,DPositioning,DVision,DPenalties,DComposure,DMarking, DStandingTackle, DSlidingTackle,DGKDiving,DGKHandling,DGKKicking,DGKPositioning,DGKReflexes]
+midlist=[mName,mAge,mOverall,mPotential,mValue, mWage, mSpecial, mPreferred_Foot,mInternational_Reputation,mWeak_Foot,mSkill_Moves, mWork_Rate,mPosition, mJersey_Number, mHeight, mWeight, mCrossing, mFinishing,mHeadingAccuracy,mShortPassing,mVolleys,mDribbling,mCurve,mFKAccuracy,mLongPassing,mBallControl,mAcceleration,mSprintSpeed,mAgility,mReactions,mBalance,mShotPower,mJumping,mStamina,mStrength,mLongShots,mAggression,mInterceptions,mPositioning,mVision,mPenalties,mComposure,mMarking, mStandingTackle, mSlidingTackle,mGKDiving,mGKHandling,mGKKicking,mGKPositioning,mGKReflexes]
+attacklist=[aName,aAge,aOverall,aPotential,aValue, aWage, aSpecial, aPreferred_Foot,aInternational_Reputation,aWeak_Foot,aSkill_Moves, aWork_Rate,aPosition, aJersey_Number, aHeight, aWeight, aCrossing, aFinishing,aHeadingAccuracy,aShortPassing,aVolleys,aDribbling,aCurve,aFKAccuracy,aLongPassing,aBallControl,aAcceleration,aSprintSpeed,aAgility,aReactions,aBalance,aShotPower,aJumping,aStamina,aStrength,aLongShots,aAggression,aInterceptions,aPositioning,aVision,aPenalties,aComposure,aMarking, aStandingTackle, aSlidingTackle,aGKDiving,aGKHandling,aGKKicking,aGKPositioning,aGKReflexes]
+
+gkdic={}
+defdic={}
+middic={}
+attackdic={}
+
+for i in range(len(characters)):
+    gkdic[characters[i]]=gklist[i]
+    defdic[characters[i]]=deflist[i]
+    middic[characters[i]]=midlist[i]
+    attackdic[characters[i]]=attacklist[i]
+
+
+
+#plots for poisitions
+
+characters1=['Age','Overall','Potential','Value','Wage','Special','International Reputation','Weak_Foot','Skill_Moves','Jersey_Number','Height','Weight','Crossing'	,'Finishing','HeadingAccuracy','ShortPassing','Volleys','Dribbling','Curve','FKAccuracy'	,'LongPassing','BallControl','Acceleration'	,'SprintSpeed'	,'Agility','Reactions'	,'Balance','ShotPower','Jumping','Stamina','Strength','LongShots','Aggression','Interceptions'	,'Positioning','Vision','Penalties','Composure','Marking'	,'StandingTackle'	,'SlidingTackle','GKDiving','GKHandling'	,'GKKicking','GKPositioning','GKReflexes']        
+gklist1=[GKAge,GKOverall,GKPotential,GKValue, GKWage, GKSpecial, GKInternational_Reputation,GKWeak_Foot,GKSkill_Moves, GKJersey_Number, GKHeight, GKWeight, GKCrossing, GKFinishing,GKHeadingAccuracy,GKShortPassing,GKVolleys,GKDribbling,GKCurve,GKFKAccuracy,GKLongPassing,GKBallControl,GKAcceleration,GKSprintSpeed,GKAgility,GKReactions,GKBalance,GKShotPower,GKJumping,GKStamina,GKStrength,GKLongShots,GKAggression,GKInterceptions,gkPositioning,GKVision,GKPenalties,GKComposure,GKMarking, GKStandingTackle, GKSlidingTackle,GKGKDiving,GKGKHandling,GKGKKicking,GKGKPositioning,GKGKReflexes]
+deflist1=[DAge,DOverall,DPotential,DValue, DWage, DSpecial, DInternational_Reputation,DWeak_Foot,DSkill_Moves, DJersey_Number, DHeight, DWeight, DCrossing, DFinishing,DHeadingAccuracy,DShortPassing,DVolleys,DDribbling,DCurve,DFKAccuracy,DLongPassing,DBallControl,DAcceleration,DSprintSpeed,DAgility,DReactions,DBalance,DShotPower,DJumping,DStamina,DStrength,DLongShots,DAggression,DInterceptions,DPositioning,DVision,DPenalties,DComposure,DMarking, DStandingTackle, DSlidingTackle,DGKDiving,DGKHandling,DGKKicking,DGKPositioning,DGKReflexes]
+midlist1=[mAge,mOverall,mPotential,mValue, mWage, mSpecial, mInternational_Reputation,mWeak_Foot,mSkill_Moves,  mJersey_Number, mHeight, mWeight, mCrossing, mFinishing,mHeadingAccuracy,mShortPassing,mVolleys,mDribbling,mCurve,mFKAccuracy,mLongPassing,mBallControl,mAcceleration,mSprintSpeed,mAgility,mReactions,mBalance,mShotPower,mJumping,mStamina,mStrength,mLongShots,mAggression,mInterceptions,mPositioning,mVision,mPenalties,mComposure,mMarking, mStandingTackle, mSlidingTackle,mGKDiving,mGKHandling,mGKKicking,mGKPositioning,mGKReflexes]
+attacklist1=[aAge,aOverall,aPotential,aValue, aWage, aSpecial, aInternational_Reputation,aWeak_Foot,aSkill_Moves, aJersey_Number, aHeight, aWeight, aCrossing, aFinishing,aHeadingAccuracy,aShortPassing,aVolleys,aDribbling,aCurve,aFKAccuracy,aLongPassing,aBallControl,aAcceleration,aSprintSpeed,aAgility,aReactions,aBalance,aShotPower,aJumping,aStamina,aStrength,aLongShots,aAggression,aInterceptions,aPositioning,aVision,aPenalties,aComposure,aMarking, aStandingTackle, aSlidingTackle,aGKDiving,aGKHandling,aGKKicking,aGKPositioning,aGKReflexes]
+ 
+for i in range(len(gklist1)):
+    
+    plt.figure(i)
+    plt.title('Goalies')
+    plt.plot(gklist1[i],GKValue,'o')
+    plt.xlabel(characters1[i])
+    plt.ylabel('Market Value (in 10 Millions Euros')
+    plt.show()    
+    
+for i in range(len(deflist1)):
+    
+    plt.figure(i)
+    plt.title('Defenders')
+    plt.plot(deflist1[i],DValue,'o')
+    plt.xlabel(characters1[i])
+    plt.ylabel('Market Value (in 10 Millions Euros')
+    plt.show()    
+        
+for i in range(len(midlist1)):
+    
+    plt.figure(i)
+    plt.title('Midfield')
+    plt.plot(midlist1[i],mValue,'o')
+    plt.xlabel(characters1[i])
+    plt.ylabel('Market Value (in 10 Millions Euros)')
+    plt.show()    
+    
+for i in range(len(attacklist1)):
+    
+    plt.figure(i)
+    plt.title('Offense')
+    plt.plot(attacklist1[i],aValue,'o')
+    plt.xlabel(characters1[i])
+    plt.ylabel('Market Value (in 10 Millions Euros')
+    plt.show()    
+    
+'''   
+
+gk = pd.DataFrame(gkdic)
+gk.to_excel('./goalies.xlsx')
+deffy=pd.DataFrame(defdic)
+deffy.to_excel('./defenders.xlsx')
+middy=pd.DataFrame(middic)
+middy.to_excel('./midfield.xlsx')
+attacky=pd.DataFrame(attackdic)
+attacky.to_excel('./attackers.xlsx')'''
