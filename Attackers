@@ -1,0 +1,72 @@
+
+#offense
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+
+
+data= pd.read_csv(r'C:\Users\frank\Documents\MATH 227\attackers.csv')
+
+
+
+
+
+#this finds overall score of player
+
+
+print(data.describe())
+X=data[['Age','International Reputation','Finishing','HeadingAccuracy','ShortPassing','Dribbling','BallControl','Acceleration','SprintSpeed','Agility','Reactions','ShotPower','LongShots','Positioning','Vision']]
+y = data['Overall']
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X_train, y_train)
+
+coeff_df = pd.DataFrame(regressor.coef_, X.columns, columns=['Coefficient'])
+print(coeff_df)
+
+y_pred = regressor.predict(X_test)
+
+df = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
+print(df)
+
+from sklearn import metrics
+print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))
+print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))
+print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
+
+
+
+#Now figure out the value of a player
+
+X1=data['Overall']
+y1 = data['Value']
+print(y1)
+
+
+
+mymodel = np.poly1d(np.polyfit(X1, y1,3))
+
+myline = np.linspace(0,100)
+plt.scatter(X1, y1)
+plt.plot(myline, mymodel(myline),c='red')
+plt.title('Attackers Overall vs Value')
+plt.xlabel('Overall Score')
+plt.ylabel('Value')
+plt.ylim([0,150000000])   
+plt.show()
+
+from sklearn.metrics import r2_score
+print(r2_score(y1, mymodel(X1)))
+
+DeGeaStats=np.array([31,2,80,90,80,90,81,93,85,80,83,87,89,87,82])
+DeGeaStats=DeGeaStats.reshape(1,15)
+DeGeaOverall=regressor.predict(DeGeaStats)
+DeGeaValue=mymodel(70)
+print(DeGeaOverall,DeGeaValue)
