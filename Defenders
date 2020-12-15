@@ -1,0 +1,92 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+
+
+data= pd.read_csv(r'C:\Users\frank\Documents\MATH 227\defenders.csv')
+
+
+#this finds overall score of player
+
+
+
+
+
+print(data.describe())
+X=data[['Age','International Reputation','HeadingAccuracy','ShortPassing','BallControl','Reactions','Jumping','Strength','Aggression','Interceptions','Marking','StandingTackle','SlidingTackle']]
+y = data['Overall']
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X_train, y_train)
+
+coeff_df = pd.DataFrame(regressor.coef_, X.columns, columns=['Coefficient'])
+print(coeff_df)
+
+y_pred = regressor.predict(X_test)
+
+df = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
+print(df)
+
+from sklearn import metrics
+print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))
+print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))
+print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
+
+
+
+#this finds value of player
+
+X1=data['Overall']
+y1 = data['Value']
+
+
+mymodel = np.poly1d(np.polyfit(X1, y1,3))
+
+myline = np.linspace(0,100)
+plt.scatter(X1, y1)
+plt.plot(myline, mymodel(myline),c='red')
+plt.title('Defenders Overall vs Value')
+plt.xlabel('Overall Score')
+plt.ylabel('Value')
+plt.ylim([0,150000000])   
+plt.show()
+
+from sklearn.metrics import r2_score
+print(r2_score(y1, mymodel(X1)))
+
+
+
+import random
+
+for i in range(50):
+    Age1=random.randint(20,30)
+    intrep=random.randint(1,6)
+    heading1=random.randint(60,100)
+    shortpass1=random.randint(60,100)
+    ballcontrol1=random.randint(60,100)
+    reaction1=random.randint(60,100)
+    jumping1=random.randint(60,100)
+    strength1=random.randint(60,100)
+    aggression1=random.randint(60,100)
+    interception1=random.randint(60,100)
+    marking1=random.randint(60,100)
+    standt=random.randint(60,100)
+    slidet=random.randint(60,100)
+    
+    rowvector=np.array([Age1,intrep,heading1,shortpass1,ballcontrol1,reaction1,jumping1,strength1,aggression1,interception1,marking1,standt,slidet])
+    rowvector=rowvector.reshape(1,13)
+    Goverall=float(regressor.predict(rowvector))
+    GValue=int((mymodel(Goverall)))
+    print(f'Player{i+1} Overall:{Goverall} Value:{GValue}')
+
+DeGeaStats=np.array([30,3,70,70,70,70,70,75,72,70,80,81,86])
+DeGeaStats=DeGeaStats.reshape(1,13)
+DeGeaOverall=regressor.predict(DeGeaStats)
+DeGeaValue=mymodel(70)
+print(DeGeaOverall,DeGeaValue)
