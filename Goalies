@@ -1,0 +1,101 @@
+#Goalies
+
+
+
+
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+
+
+data= pd.read_csv(r'C:\Users\frank\Documents\MATH 227\goalies.csv')
+
+
+
+
+
+
+
+
+print(data.describe())
+X=data[['Age','International Reputation','Reactions','GKDiving','GKHandling','GKKicking','GKPositioning','GKReflexes']]
+y = data['Overall']
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X_train, y_train)
+
+coeff_df = pd.DataFrame(regressor.coef_, X.columns, columns=['Coefficient'])
+print(coeff_df)
+
+y_pred = regressor.predict(X_test)
+
+df = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
+print(df)
+
+from sklearn import metrics
+print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))
+print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))
+print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
+
+
+
+
+
+X1=data['Overall']
+y1 = data['Value']
+
+
+mymodel = np.poly1d(np.polyfit(X1, y1,3))
+
+myline = np.linspace(0,100)
+plt.scatter(X1, y1)
+plt.plot(myline, mymodel(myline),c='red')
+plt.title('Goalies Overall vs Value')
+plt.xlabel('Overall Score')
+plt.ylabel('Value')
+
+plt.ylim([0,150000000])   
+plt.show()
+
+from sklearn.metrics import r2_score
+print(r2_score(y1, mymodel(X1)))
+
+
+
+import random
+
+
+    
+for i in range(50):
+    Age1=random.randint(20,30)
+    intrep=random.randint(1,6)
+    reactions1=random.randint(60,100)
+    gkdiving=random.randint(60,100)
+    gkhand=random.randint(60,100)
+    gkkick=random.randint(60,100)
+    gkpos=random.randint(60,100)
+    gkreflex=random.randint(60,100)
+    
+    rowvector=np.array([Age1,intrep,reactions1,gkdiving,gkhand,gkkick,gkpos,gkreflex])
+    rowvector=rowvector.reshape(1,8)
+    Goverall=float(regressor.predict(rowvector))
+    GValue=int((mymodel(Goverall)))
+    print(f'Player{i+1} Overall:{Goverall} Value:{GValue}')
+
+
+DeGeaStats=np.array([30,2,70,64,82,75,85,72])
+DeGeaStats=DeGeaStats.reshape(1,8)
+DeGeaOverall=regressor.predict(DeGeaStats)
+DeGeaValue=mymodel(70)
+
+print(DeGeaOverall,DeGeaValue)
+#compares actual value vs models value
+'''for i in range(0,50):
+    print(y1[i],'\t',mymodel(X1[i]))'''
