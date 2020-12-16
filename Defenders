@@ -33,6 +33,14 @@ y_pred = regressor.predict(X_test)
 df = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
 print(df)
 
+reg_label = "Inliers coef:%s - b:%0.2f" % \
+            (np.array2string(regressor.coef_,
+                             formatter={'float_kind': lambda fk: "%.3f" % fk}),
+            regressor.intercept_)
+print(reg_label)
+
+print(mymodel)
+
 from sklearn import metrics
 print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))
 print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))
