@@ -34,6 +34,14 @@ regressor.fit(X_train, y_train)
 coeff_df = pd.DataFrame(regressor.coef_, X.columns, columns=['Coefficient'])
 print(coeff_df)
 
+reg_label = "Inliers coef:%s - b:%0.2f" % \
+            (np.array2string(regressor.coef_,
+                             formatter={'float_kind': lambda fk: "%.3f" % fk}),
+            regressor.intercept_)
+print(reg_label)
+
+print(mymodel)
+
 y_pred = regressor.predict(X_test)
 
 df = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
